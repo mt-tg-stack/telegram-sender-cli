@@ -1,0 +1,104 @@
+[project]
+name = "telegram-sender-cli"
+description = "A powerful, interactive command-line tool for sending messages and media via Telegram. Designed for broadcasting content to multiple targets with granular control over sending strategies."
+readme = "README.rst"
+requires-python = ">=3.14"
+license = "MIT"
+authors = [
+    { name = "GrehBan", email = "maximfeedback19@gmail.com" },
+]
+maintainers = [
+    { name = "GrehBan", email = "maximfeedback19@gmail.com" },
+]
+dependencies = [
+    "prompt-toolkit>=3.0.52",
+    "rich>=14.3.3",
+    "telegram-sender==0.2.0",
+    "tgcrypto>=1.2.5",
+    "tomli-w>=1.2.0",
+]
+dynamic = ["version"]
+
+[dependency-groups]
+dev = [
+    "ruff~=0.14",
+    "mypy==1.10.1",
+    "pre-commit~=4.3",
+    "isort>=8.0.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["telegram_sender_cli/"]
+[tool.hatch.version]
+path = "telegram_sender_cli/__meta__.py"
+
+[tool.ruff]
+line-length = 79
+src = ["telegram_sender_cli", "tests"]
+target-version = "py314"
+exclude = [
+    ".git",
+    "build",
+    "dist",
+    "venv",
+    ".venv",
+    "docs",
+    "dev",
+    "scripts",
+    "*.egg-info",
+]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "F",   # pyflakes
+    "C4",  # flake8-comprehensions
+    "Q",   # flake8-quotes
+    "RET", # flake8-return
+    "I",   # isort (встроен в ruff)
+    "UP",  # pyupgrade
+    "T10", # flake8-debugger
+]
+ignore = []
+
+[tool.ruff.lint.isort]
+known-first-party = ["telegram_sender_cli"]
+
+[tool.mypy]
+python_version = "3.14"
+plugins = "pydantic.mypy"
+show_error_codes = true
+show_error_context = true
+pretty = true
+ignore_missing_imports = false
+warn_unused_configs = true
+disallow_subclassing_any = true
+disallow_any_generics = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = false
+warn_return_any = true
+follow_imports_for_stubs = true
+namespace_packages = true
+show_absolute_path = true
+
+[[tool.mypy.overrides]]
+module = "telegram_sender.*"
+ignore_missing_imports = true
+
+[tool.isort]
+profile = "ruff"
+line_length = 79
+
+[tool.uv.sources]
+telegram-sender = { git = "https://github.com/mt-tg-stack/telegram-sender.git" }

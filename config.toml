@@ -1,0 +1,23 @@
+[session]
+name = "my_session"
+api_id = 1234
+api_hash = ""
+
+[proxy]
+proxies = []
+default_scheme = "socks5"
+default_host = "127.0.0.1"
+default_port = 1080
+
+[strategies]
+delay = 1.0
+rate_limit = 20
+rate_period = 60.0
+timeout = 5.0
+retry_attempts = 3
+retry_delay = 2.0
+
+[chat_targets]
+targets = [
+    "me",
+]

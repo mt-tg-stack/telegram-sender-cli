@@ -9,6 +9,9 @@ telegram-sender-cli
 
 A powerful, interactive command-line tool for sending messages and media via Telegram. Designed for broadcasting content to multiple targets with granular control over sending strategies.
 
+.. image:: preview.png
+   :alt: cli preview
+
 Features
 ========
 
